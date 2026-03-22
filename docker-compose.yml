@@ -1,20 +1,25 @@
 version: '3.8'
 
 services:
-  db_postgres:
-    image: postgres:latest
-    container_name: postgres_container
+  db:
+    image: postgres:13
+    container_name: postgres_db
     restart: always
     environment:
-      - POSTGRES_USER=yasmin_data_eng
-      - POSTGRES_PASSWORD=2519
-      - POSTGRES_DB=banco_cotacao
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
 
   adminer:
-    image: adminer:latest
-    container_name: adminer_container
+    image: adminer
+    container_name: adminer_ui
     restart: always
     ports:
       - "8080:8080"
+
+volumes:
+  postgres_data:
