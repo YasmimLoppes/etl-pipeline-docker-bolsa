@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  db_postgres:
+    image: postgres:latest
+    container_name: postgres_container
+    restart: always
+    environment:
+      - POSTGRES_USER=yasmin_data_eng
+      - POSTGRES_PASSWORD=2519
+      - POSTGRES_DB=banco_cotacao
+    ports:
+      - "5432:5432"
+
+  adminer:
+    image: adminer:latest
+    container_name: adminer_container
+    restart: always
+    ports:
+      - "8080:8080"
