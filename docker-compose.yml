@@ -1,14 +1,12 @@
-version: '3.8'
-
 services:
   db:
     image: postgres:13
     container_name: postgres_db
     restart: always
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: airflow
+      POSTGRES_PASSWORD: airflow
+      POSTGRES_DB: airflow
     ports:
       - "5432:5432"
     volumes:
@@ -19,7 +17,7 @@ services:
     container_name: adminer_ui
     restart: always
     ports:
-      - "8080:8080"
+      - "8081:8080"
 
 volumes:
   postgres_data:
