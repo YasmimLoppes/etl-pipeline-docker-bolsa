@@ -5,9 +5,9 @@ services:
     image: postgres:13
     container_name: postgres_db
     environment:
-      - POSTGRES_USER=yasmim_data_eng
-      - POSTGRES_PASSWORD=yasmim2519
-      - POSTGRES_DB=banco_cotacao
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=${DB_NAME}
     ports:
       - "5433:5432"
     volumes:
