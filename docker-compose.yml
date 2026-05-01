@@ -4,22 +4,23 @@ services:
   db:
     image: postgres:13
     container_name: postgres_db
-    restart: always
     environment:
-      POSTGRES_USER: airflow
-      POSTGRES_PASSWORD: airflow
-      POSTGRES_DB: airflow_db
+      - POSTGRES_USER=yasmim_data_eng
+      - POSTGRES_PASSWORD=yasmim2519
+      - POSTGRES_DB=banco_cotacao
     ports:
-      - "5433:5432"  # Corrigido: removido o traço extra e mantido na porta 5433
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   adminer:
     image: adminer
     container_name: adminer_ui
-    restart: always
     ports:
       - "8081:8080"
+    depends_on:
+      - db
 
 volumes:
   postgres_data:
+  

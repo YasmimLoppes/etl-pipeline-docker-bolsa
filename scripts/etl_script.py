@@ -31,18 +31,20 @@ def transform_data(data):
     return df
 
 def load_to_db(df):
-    """Carga Segura no PostgreSQL"""
     if df is None: return
     
-    # Puxando as credenciais das variáveis de ambiente
-    USER = os.getenv("DB_USER")
-    PASSWORD = os.getenv("DB_PASSWORD")
-    HOST = os.getenv("DB_HOST")
-    PORT = os.getenv("DB_PORT")
-    DB_NAME = os.getenv("DB_NAME")
+    # .strip() remove espaços em branco acidentais
+    USER = os.getenv("DB_USER").strip()
+    PASSWORD = os.getenv("DB_PASSWORD").strip()
+    HOST = os.getenv("DB_HOST").strip()
+    PORT = os.getenv("DB_PORT").strip()
+    DB_NAME = os.getenv("DB_NAME").strip()
 
     try:
-        engine = create_engine(f'postgresql://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}')
+        # Forçamos a conexão TCP pura
+        db_url = f'postgresql+psycopg2://{USER}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}'
+        engine = create_engine(db_url)
+        
         df.to_sql('cotacoes_dolar', engine, if_exists='append', index=False)
         print("🚀 Carga realizada com sucesso!")
     except Exception as e:
