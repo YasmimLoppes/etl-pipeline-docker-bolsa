@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   db:
     image: postgres:13
@@ -8,7 +10,7 @@ services:
       POSTGRES_PASSWORD: airflow
       POSTGRES_DB: airflow_db
     ports:
-      - "5432:5432"
+      - "5433:5432"  # Corrigido: removido o traço extra e mantido na porta 5433
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
