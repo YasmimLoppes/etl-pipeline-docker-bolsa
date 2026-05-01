@@ -4,4 +4,4 @@
 
 # 🚀 Pipeline ETL de Cotação de Moedas com Docker
 
-Olá! Eu sou a **Yasmin**, focada em **Engenharia de Dados**. Este projeto demonstra um fluxo de ingestão de dados financeiros usando Python, Docker e PostgreSQL.
+Olá! Eu sou a **Yasmim**, focada em **Engenharia de Dados**. Este projeto demonstra um fluxo de ingestão de dados financeiros usando Python, Docker e PostgreSQL.
